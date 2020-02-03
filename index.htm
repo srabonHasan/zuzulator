@@ -1,0 +1,94 @@
+<!doctype HTML>
+
+<head>
+	<title>Zuzulator</title>
+	<link href="calc.css" rel="stylesheet">
+	</style>
+
+
+
+</head>
+
+<body>
+	
+<div class="border">
+	<form class="container">
+			<input value="0" id="inputNumber" class="display" readonly="readonly">
+				<span>
+					<button type="button" class="numbers" onclick="getNumber(1)">1</button>
+					<button type="button" class="numbers"  readonly="readonly"onclick="getNumber(2)">2</button>
+					<button type="button" class="numbers" onclick="getNumber(3)">3</button>
+					<button type="button" class="numbers operation-button" onclick="operation('d')">&divide</button>
+				</span>
+				<span>
+					<button type="button" class="numbers" onclick="getNumber(4)">4</button>
+					<button type="button" class="numbers" onclick="getNumber(5)">5</button>
+					<button type="button" class="numbers" onclick="getNumber(6)">6</button>
+					<button type="button" class="numbers operation-button" onclick="operation('*')">X</button>
+				</span>
+				<span>	
+					<button type="button" class="numbers" onclick="getNumber(7)">7</button>
+					<button type="button" class="numbers" onclick="getNumber(8)">8</button>
+					<button type="button" class="numbers" onclick="getNumber(9)">9</button>
+					<button type="button" class="numbers" onclick="operation('-')">-</button> </span>
+				<span> 
+					<button type="button" class="lnumbers" onclick="cls()">C</button>
+					<button type="button" class="lnumbers" onclick="getNumber(0)">0</button>
+					<button type="button" class="lnumbers" onclick="operation('+')">+</button>
+					<button type="button" class="lnumbers" onclick="calculate()">=</button><br>
+				</span>
+
+  </form>
+</div>
+  
+  <script>
+ let a = 0;
+let b = 0;
+let op = "";
+let inputNumber = document.getElementById("inputNumber");
+
+function cls() {
+  inputNumber.value = "0";
+}
+function getNumber(a) {
+  number = inputNumber.value;
+
+  if (number == "0") {
+    inputNumber.value = a;
+  } else {
+    inputNumber.value = number + a;
+  }
+}
+
+function operation(t) {
+  a = inputNumber.value;
+  op = t;
+  cls();
+  return a, op;
+}
+function calculate() {
+
+  a = parseInt(a, 10);
+  b = inputNumber.value;
+  b = parseInt(b, 10);
+  
+  switch (op) {
+    case "+":
+      inputNumber.value = a + b;
+      break;
+    case "-":
+      inputNumber.value = a - b;
+      break;
+    case "d":
+      inputNumber.value = Math.round(a / b, 2);
+      break;
+    case "*":
+      inputNumber.value = a * b;
+      break;
+  }
+}
+
+</script>
+  
+  </body>
+  </html>
